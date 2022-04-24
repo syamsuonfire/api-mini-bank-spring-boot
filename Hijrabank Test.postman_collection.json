@@ -6,27 +6,15 @@
 	},
 	"item": [
 		{
-			"name": "Transaction",
+			"name": "Person",
 			"item": [
 				{
-					"name": "Get All Transaction",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "Get All Person",
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "http://localhost:8080/api/transactions",
+							"raw": "http://localhost:8080/api/persons",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -34,31 +22,19 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"transactions"
+								"persons"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Get Data Transaction",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "Get Data Person",
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "http://localhost:8080/api/transactions/1",
+							"raw": "http://localhost:8080/api/persons/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -66,7 +42,7 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"transactions",
+								"persons",
 								"1"
 							]
 						}
@@ -74,13 +50,13 @@
 					"response": []
 				},
 				{
-					"name": "Create Transaction",
+					"name": "Create Person",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "    {\r\n        \"status\": \"Deposit\",\r\n        \"amount\": 10000,\r\n        \"transactionDate\": \"2022-04-24\",\r\n        \"member\": {\r\n        \"id\": 3,\r\n        \"name\": \"Test\",\r\n        \"birthDate\": \"2020-12-01\",\r\n        \"address\": \"Test Alamat\"\r\n        }\r\n    }",
+							"raw": "    {\r\n        \"name\": \"Create\",\r\n        \"birthDate\": \"2020-12-01\",\r\n        \"address\": \"Create\"\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -88,7 +64,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/transactions",
+							"raw": "http://localhost:8080/api/persons",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -96,20 +72,20 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"transactions"
+								"persons"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Update Transaction",
+					"name": "Update Person",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "    {\r\n         \"id\": 1,\r\n        \"status\": \"Deposit\",\r\n        \"amount\": 10000,\r\n        \"transactionDate\": \"2022-04-24\",\r\n        \"member\": {\r\n        \"id\": 3,\r\n        \"name\": \"Test\",\r\n        \"birthDate\": \"2020-12-01\",\r\n        \"address\": \"Test Alamat\"\r\n        }\r\n    }",
+							"raw": "    {\r\n        \"id\":1,\r\n        \"name\": \"Update\",\r\n        \"birthDate\": \"2020-12-01\",\r\n        \"address\": \"Update\"\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -117,7 +93,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/transactions/1",
+							"raw": "http://localhost:8080/api/persons/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -125,7 +101,7 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"transactions",
+								"persons",
 								"1"
 							]
 						}
@@ -133,12 +109,12 @@
 					"response": []
 				},
 				{
-					"name": "Delete Transaction",
+					"name": "Delete Person",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/transactions/1",
+							"raw": "http://localhost:8080/api/persons/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -146,7 +122,7 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"transactions",
+								"persons",
 								"1"
 							]
 						}
@@ -156,111 +132,16 @@
 			]
 		},
 		{
-			"name": "Member",
+			"name": "Account",
 			"item": [
 				{
-					"name": "Get All Member",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/api/members",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"members"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Data Member",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/api/members/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"members",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Member",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/api/members/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"members",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Member",
+					"name": "Create Account",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "    {\r\n        \"name\": \"kereeen mantap hahaha \",\r\n        \"birthDate\": \"2020-12-01\",\r\n        \"address\": \"hahahkwkowkowkoa\"\r\n    }",
+							"raw": "{\r\n    \"balance\":\"1000.00\",\r\n    \"dailyWithdrawalLimit\":\"10000.00\",\r\n    \"active\":\"true\",\r\n    \"accountType\":1434\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -268,7 +149,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/members",
+							"raw": "http://localhost:8080/api/accounts/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -276,28 +157,20 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"members"
+								"accounts",
+								"1"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Update Member",
+					"name": "Block Account",
 					"request": {
-						"method": "PUT",
+						"method": "POST",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "    {\r\n        \"id\": 4,\r\n        \"name\": \"Check\",\r\n        \"birthDate\": \"2020-12-01\",\r\n        \"address\": \"wkkwkw nih\"\r\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "http://localhost:8080/api/members/4",
+							"raw": "http://localhost:8080/api/accounts/block/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -305,8 +178,100 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"members",
-								"4"
+								"accounts",
+								"block",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Balance Account",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/accounts/balance/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"accounts",
+								"balance",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Withdraw",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/transactions/1/withdrawal/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transactions",
+								"1",
+								"withdrawal",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/transactions/1/credit/100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transactions",
+								"1",
+								"credit",
+								"100"
 							]
 						}
 					},
