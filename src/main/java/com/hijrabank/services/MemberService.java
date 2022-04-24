@@ -1,7 +1,4 @@
 package com.hijrabank.services;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -31,7 +28,7 @@ public class MemberService {
         return member.get();
     }
 
-    public List<Member> findAll() {
+    public Iterable<Member> findAll() {
         return memberRepo.findAll();
     }
 

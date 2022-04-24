@@ -2,6 +2,8 @@ package com.hijrabank.models.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+
 import java.sql.Date;
 
 @Entity
@@ -14,6 +16,7 @@ public class Transaction implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "Status is required")
     private String status;
 
     private Integer amount;
@@ -21,14 +24,12 @@ public class Transaction implements Serializable {
     @Column(name = "transaction_date")
     private Date transactionDate;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "member_id", nullable = false)
+    @ManyToOne
     private Member member;
 
 
     public Transaction() {
     }
-
 
     public Transaction(Long id, String status, Integer amount, Date transactionDate, Member member) {
         this.id = id;
@@ -43,11 +44,9 @@ public class Transaction implements Serializable {
         return serialVersionUID;
     }
 
-
     public Long getId() {
         return id;
     }
-
 
     public void setId(Long id) {
         this.id = id;
@@ -63,16 +62,13 @@ public class Transaction implements Serializable {
         this.status = status;
     }
 
-
     public Integer getAmount() {
         return amount;
     }
 
-
     public void setAmount(Integer amount) {
         this.amount = amount;
     }
-
 
     public Date getTransactionDate() {
         return transactionDate;
@@ -83,17 +79,13 @@ public class Transaction implements Serializable {
         this.transactionDate = transactionDate;
     }
 
-
     public Member getMember() {
         return member;
     }
 
-
     public void setMember(Member member) {
         this.member = member;
     }
-
-
 
 }
 

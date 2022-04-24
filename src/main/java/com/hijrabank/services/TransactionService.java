@@ -1,6 +1,4 @@
 package com.hijrabank.services;
-
-import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -30,7 +28,7 @@ public class TransactionService {
         return transaction.get();
     }
 
-    public List<Transaction> findAll() {
+    public Iterable<Transaction> findAll() {
         return transactionRepo.findAll();
     }
 

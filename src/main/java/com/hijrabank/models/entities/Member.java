@@ -2,19 +2,15 @@ package com.hijrabank.models.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -27,31 +23,25 @@ public class Member implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "Name is required")
     private String name;
+
 
     @Column(name = "birth_date")
     private Date birthDate;
 
+    @NotEmpty(message = "Address is required")
     private String address;
-
-    @OneToMany(
-            mappedBy = "member",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-
-    @JsonIgnore
-    private List<Transaction> transactions;
 
     public Member() {
     }
 
-    public Member(Long id, String name, Date birthDate, String address, List<Transaction> transactions) {
+    public Member(Long id, String name, Date birthDate, String address) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
         this.address = address;
-        this.transactions = transactions;
+
     }
 
     public static long getSerialversionuid() {
@@ -88,14 +78,6 @@ public class Member implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public List<Transaction> getTransaction() {
-        return transactions;
-    }
-
-    public void setTransaction(List<Transaction> transactions) {
-        this.transactions = transactions;
     }
     
 }
