@@ -15,15 +15,15 @@ public class Person extends AuditModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-	@Size(min = 3, message = "Too short")
-	@Size(max = 50, message = "Too long")
+    @NotNull(message = "Name is required")
+	@Size(min = 3, message = "Name too short, min 3 characters")
+	@Size(max = 50, message = "Name too long, max 50 characters")
     private String name;
 
-    @NotNull
+    @NotNull(message = "Address is required")
     private String address;
 
-    @NotNull
+    @NotNull(message = "Birthdate is required")
     @Temporal(TemporalType.DATE)
 	private Date birthDate;
 	
@@ -77,8 +77,6 @@ public class Person extends AuditModel {
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
-
-
 
 	public Account getAccount() {
 		return account;

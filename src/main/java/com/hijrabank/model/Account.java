@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -43,10 +44,12 @@ public class Account extends AuditModel  {
 
 	@NotNull
 	@NumberFormat(pattern = "#,###,###,###.##")
+	@Min(value = 0, message = "Balance must be greater than 0")
 	private BigDecimal balance;
 	
 	@NotNull
 	@NumberFormat(pattern = "#,###,###,###.##")
+	@Min(value = 0, message = "DailyDebitLimit must be greater than 0")
 	private BigDecimal dailyDebitLimit;
 	
 	@NotNull
@@ -106,6 +109,4 @@ public class Account extends AuditModel  {
 		this.active = active;
 	}
 
-	
-	
 }

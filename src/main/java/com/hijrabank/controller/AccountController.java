@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hijrabank.jpa.exception.*;
+import com.hijrabank.exception.ResourceNotFoundException;
 import com.hijrabank.model.Account;
 import com.hijrabank.repository.AccountRepository;
 import com.hijrabank.repository.PersonRepository;
