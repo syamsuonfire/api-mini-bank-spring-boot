@@ -16,7 +16,8 @@ public class Person extends AuditModel {
     private Long id;
 
     @NotNull
-    @Size(max = 50)
+	@Size(min = 3, message = "Too short")
+	@Size(max = 50, message = "Too long")
     private String name;
 
     @NotNull
