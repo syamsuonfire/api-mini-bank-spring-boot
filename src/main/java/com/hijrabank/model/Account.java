@@ -43,7 +43,7 @@ public class Account extends AuditModel  {
 	
 	@NotNull
 	@NumberFormat(pattern = "#,###,###,###.##")
-	private BigDecimal dailyWithdrawalLimit;
+	private BigDecimal dailyDebitLimit;
 	
 	@NotNull
 	private boolean active;
@@ -53,12 +53,12 @@ public class Account extends AuditModel  {
 	public Account() {
 	}
 
-	public Account(Long id, Person person, @NotNull BigDecimal balance, @NotNull BigDecimal dailyWithdrawalLimit,
+	public Account(Long id, Person person, @NotNull BigDecimal balance, @NotNull BigDecimal dailyDebitLimit,
 			@NotNull boolean active) {
 		this.id = id;
 		this.person = person;
 		this.balance = balance;
-		this.dailyWithdrawalLimit = dailyWithdrawalLimit;
+		this.dailyDebitLimit = dailyDebitLimit;
 		this.active = active;
 	}
 
@@ -86,12 +86,12 @@ public class Account extends AuditModel  {
 		this.balance = balance;
 	}
 
-	public BigDecimal getDailyWithdrawalLimit() {
-		return dailyWithdrawalLimit;
+	public BigDecimal getDailyDebitLimit() {
+		return dailyDebitLimit;
 	}
 
-	public void setDailyWithdrawalLimit(BigDecimal dailyWithdrawalLimit) {
-		this.dailyWithdrawalLimit = dailyWithdrawalLimit;
+	public void setDailyDebitLimit(BigDecimal dailyDebitLimit) {
+		this.dailyDebitLimit = dailyDebitLimit;
 	}
 
 	public boolean isActive() {

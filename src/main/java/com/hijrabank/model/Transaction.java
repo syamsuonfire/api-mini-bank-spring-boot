@@ -34,7 +34,7 @@ public class Transaction  extends AuditModel {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 	@JsonIdentityReference(alwaysAsId = true)
-	@JsonProperty("accoout_id")
+	@JsonProperty("account_id")
 	private Account account;
 
 	@NotNull

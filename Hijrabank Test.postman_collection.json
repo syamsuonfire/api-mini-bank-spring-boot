@@ -9,7 +9,7 @@
 			"name": "Person",
 			"item": [
 				{
-					"name": "Get All Person",
+					"name": "Get All Persons",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -56,7 +56,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "    {\r\n        \"name\": \"Create\",\r\n        \"birthDate\": \"2020-12-01\",\r\n        \"address\": \"Create\"\r\n    }",
+							"raw": "    {\r\n        \"name\": \"Wawan Setiawan,\",\r\n        \"birthDate\": \"1990-01-10\",\r\n        \"address\": \"kompleks Asia Serasi No 100\"\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -85,7 +85,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "    {\r\n        \"id\":1,\r\n        \"name\": \"Update\",\r\n        \"birthDate\": \"2020-12-01\",\r\n        \"address\": \"Update\"\r\n    }",
+							"raw": "    {\r\n        \"id\":1,\r\n        \"name\": \"Wawan Setiawan,\",\r\n        \"birthDate\": \"1990-01-10\",\r\n        \"address\": \"kompleks Asia Serasi No 100\"\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -141,7 +141,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"balance\":\"1000.00\",\r\n    \"dailyWithdrawalLimit\":\"10000.00\",\r\n    \"active\":\"true\",\r\n    \"accountType\":1434\r\n}",
+							"raw": "{\r\n    \"balance\":\"1000.00\",\r\n    \"dailyDebitLimit\":\"10000.00\",\r\n    \"active\":\"true\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -149,7 +149,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/accounts/1",
+							"raw": "http://localhost:8080/api/accounts/create/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -158,6 +158,7 @@
 							"path": [
 								"api",
 								"accounts",
+								"create",
 								"1"
 							]
 						}
@@ -187,7 +188,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Balance Account",
+					"name": "Get Account Balance",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -214,13 +215,37 @@
 			"name": "Transaction",
 			"item": [
 				{
-					"name": "Withdraw",
+					"name": "All Transactions",
 					"request": {
-						"method": "POST",
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/transactions/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transactions",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "History Transactions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \r\n}",
+							"raw": "{\r\n    \"fromDate\":\"2022-04-22\",\r\n    \"toDate\":\"2022-04-25\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -228,7 +253,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/transactions/1/withdrawal/1",
+							"raw": "http://localhost:8080/api/transactions/1/history",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -238,8 +263,7 @@
 								"api",
 								"transactions",
 								"1",
-								"withdrawal",
-								"1"
+								"history"
 							]
 						}
 					},
@@ -250,17 +274,8 @@
 					"request": {
 						"method": "POST",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "http://localhost:8080/api/transactions/1/credit/100",
+							"raw": "http://localhost:8080/api/transactions/1/credit/150",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -271,7 +286,30 @@
 								"transactions",
 								"1",
 								"credit",
-								"100"
+								"150"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Debit",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/transactions/1/debit/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"transactions",
+								"1",
+								"debit",
+								"10"
 							]
 						}
 					},

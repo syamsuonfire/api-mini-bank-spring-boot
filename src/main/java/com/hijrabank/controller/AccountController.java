@@ -27,7 +27,7 @@ public class AccountController {
 	@Autowired
 	PersonRepository personRepository;
 
-	@PostMapping("/{personId}")
+	@PostMapping("/create/{personId}")
 	public Account createAccount(@PathVariable(value = "personId") Long personId, @Valid @RequestBody Account account) {
 		return personRepository.findById(personId).map(person -> {
 			account.setPerson(person);

@@ -21,15 +21,15 @@ public class TransactionService {
 	TransactionRepository transactionRepository;
 
 	@Transactional
-	public Transaction withdrawal(Long accountId, BigDecimal amountToDebit) throws Exception {
+	public Transaction debit(Long accountId, BigDecimal amountToDebit) throws Exception {
 
-		BigDecimal totalDayWithDrawal = transactionRepository.totalDayWithDrawal(accountId) == null
+		BigDecimal totalDayDebit = transactionRepository.totalDayDebit(accountId) == null
 				? BigDecimal.valueOf(0).movePointLeft(2)
-				: transactionRepository.totalDayWithDrawal(accountId);
+				: transactionRepository.totalDayDebit(accountId);
 
 		Account account = accountRepository.findById(accountId).get();
 		
-		if (totalDayWithDrawal.add(amountToDebit).compareTo(account.getDailyWithdrawalLimit()) >0 ) {
+		if (totalDayDebit.add(amountToDebit).compareTo(account.getDailyDebitLimit()) >0 ) {
 			throw new Exception("Daily Limit exceeded!");
 		}
 			
