@@ -12,20 +12,20 @@
 
 # List API
 
-Person
-GET - api/persons
-GET - api/persons/{id}
-POST - api/persons
-PUT - api/persons/{id}
-DELETE - api/persons/{id}
+Person<br>
+GET - api/persons<br>
+GET - api/persons/{id}<br>
+POST - api/persons<br>
+PUT - api/persons/{id}<br>
+DELETE - api/persons/{id}<br>
 
-Account
-Create Account - POST - api/accounts/create/{personId}
-Block Account - POST - api/accounts/create/{accountId}
-Check Balance - GET - api/accounts/balance/{accountId}
+Account<br>
+Create Account - POST - api/accounts/create/{personId}<br>
+Block Account - POST - api/accounts/create/{accountId}<br>
+Check Balance - GET - api/accounts/balance/{accountId}<br>
 
-Transaction
-All Transactions - GET - api/transactions/{accountId}
-History Transactions - GET - api/transactions/{accountId}/history
-Debit - POST - api/transactions/{accountId}/debit/{amountToDebit}
-Credit - POST - api/transactions/{accountId}/credit//{amountToCredit}
+Transaction<br>
+All Transactions - GET - api/transactions/{accountId}<br>
+History Transactions - GET - api/transactions/{accountId}/history<br>
+Debit - POST - api/transactions/{accountId}/debit/{amountToDebit}<br>
+Credit - POST - api/transactions/{accountId}/credit//{amountToCredit}<br>
