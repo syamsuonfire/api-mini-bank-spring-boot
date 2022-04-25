@@ -1,4 +1,4 @@
-# Hijrabank-test
+# Hijrabank-backend
 
 1. Struktur table di PostgreSQL untuk menyimpan data-data tsb (Done)
 2. Menyimpan data di table PostgreSQL (Done)

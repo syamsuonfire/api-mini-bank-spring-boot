@@ -2,12 +2,14 @@ package com.hijrabank.model;
 
 import java.math.BigDecimal;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -27,16 +29,18 @@ public class Account extends AuditModel  {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	//@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	//@OneToOne
-	@JoinColumn(name = "person_id", nullable = false)
+    @OneToOne(fetch = FetchType.EAGER,
+        cascade = {
+                CascadeType.MERGE,
+                CascadeType.REFRESH
+            })
+	@JoinColumn(name = "person_id", referencedColumnName = "id", nullable = false, unique = true)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 	@JsonIdentityReference(alwaysAsId = true)
 	@JsonProperty("person_id")
-	@Column(unique = true)
 	private Person person;
-	
+
 	@NotNull
 	@NumberFormat(pattern = "#,###,###,###.##")
 	private BigDecimal balance;

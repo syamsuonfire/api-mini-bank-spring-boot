@@ -24,16 +24,25 @@ public class Person extends AuditModel {
 
     @NotNull
     @Temporal(TemporalType.DATE)
-    private Date birthDate;
+	private Date birthDate;
+	
+    @OneToOne(fetch = FetchType.EAGER,
+        cascade = {
+                CascadeType.MERGE,
+                CascadeType.REFRESH
+            }, mappedBy = "person", orphanRemoval = true)
+    private Account account;
 
 	public Person() {
 	}
 
-	public Person(Long id, @NotNull @Size(max = 50) String name, @NotNull String address, @NotNull Date birthDate) {
+	public Person(Long id, @NotNull @Size(max = 50) String name, @NotNull String address, @NotNull Date birthDate,
+			Account account) {
 		this.id = id;
 		this.name = name;
 		this.address = address;
 		this.birthDate = birthDate;
+		this.account = account;
 	}
 
 	public Long getId() {
@@ -69,6 +78,14 @@ public class Person extends AuditModel {
 	}
 
 
-    
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
 }
 

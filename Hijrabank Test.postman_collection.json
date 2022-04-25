@@ -56,7 +56,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "    {\r\n        \"name\": \"Wawan Setiawan,\",\r\n        \"birthDate\": \"1990-01-10\",\r\n        \"address\": \"kompleks Asia Serasi No 100\"\r\n    }",
+							"raw": "    {\r\n        \"name\": \"Wawan Setiawan\",\r\n        \"birthDate\": \"1990-01-10\",\r\n        \"address\": \"kompleks Asia Serasi No 100\"\r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -141,7 +141,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"balance\":\"1000.00\",\r\n    \"dailyDebitLimit\":\"10000.00\",\r\n    \"active\":\"true\"\r\n}",
+							"raw": "{\r\n    \"balance\":0,\r\n    \"dailyDebitLimit\":10000,\r\n    \"active\":\"true\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
