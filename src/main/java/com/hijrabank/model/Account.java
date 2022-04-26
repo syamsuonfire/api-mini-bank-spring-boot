@@ -42,12 +42,12 @@ public class Account extends AuditModel  {
 	@JsonProperty("person_id")
 	private Person person;
 
-	@NotNull
+    @NotNull(message = "Balance is required")
 	@NumberFormat(pattern = "#,###,###,###.##")
 	@Min(value = 0, message = "Balance must be greater than 0")
 	private BigDecimal balance;
 	
-	@NotNull
+    @NotNull(message = "DailyDebitLimit is required")
 	@NumberFormat(pattern = "#,###,###,###.##")
 	@Min(value = 0, message = "DailyDebitLimit must be greater than 0")
 	private BigDecimal dailyDebitLimit;

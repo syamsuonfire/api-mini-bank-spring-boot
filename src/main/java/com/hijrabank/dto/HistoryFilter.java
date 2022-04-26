@@ -4,7 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class HistoryFilter {
-    	private Date fromDate;
+    
+	private Date fromDate;
 	private Date toDate;
 
 	public Date getFromDate() {

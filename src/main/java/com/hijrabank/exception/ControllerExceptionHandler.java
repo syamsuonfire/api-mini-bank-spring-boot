@@ -1,5 +1,6 @@
 package com.hijrabank.exception;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,7 @@ public class ControllerExceptionHandler {
     ErrorMessage message = new ErrorMessage(
         HttpStatus.INTERNAL_SERVER_ERROR.value(),
         new Date(),
-        ex.getMessage(),
+        Arrays.asList(ex.getMessage()),
         request.getDescription(false));
     
     return new ResponseEntity<ErrorMessage>(message, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -27,12 +28,25 @@ public class ControllerExceptionHandler {
             ResourceNotFoundException.class
     })
     public ResponseEntity<ErrorMessage> resourceNotFoundException(ResourceNotFoundException ex, WebRequest request) {
+        ErrorMessage message = new ErrorMessage(
+                HttpStatus.NOT_FOUND.value(),
+                new Date(),
+                Arrays.asList(ex.getMessage()),
+                request.getDescription(false));
+
+        return new ResponseEntity<ErrorMessage>(message, HttpStatus.NOT_FOUND);
+    }
+    
+        @ExceptionHandler({
+            MethodArgumentTypeMismatchException.class
+    })
+    public ResponseEntity<ErrorMessage> methodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex, WebRequest request) {
     ErrorMessage message = new ErrorMessage(
-        HttpStatus.NOT_FOUND.value(),
+        HttpStatus.BAD_REQUEST.value(),
         new Date(),
-        "ex.getMessage()",
+        Arrays.asList(ex.getMessage()),
         request.getDescription(false));
     
-    return new ResponseEntity<ErrorMessage>(message, HttpStatus.NOT_FOUND);
+    return new ResponseEntity<ErrorMessage>(message, HttpStatus.BAD_REQUEST);
     }
 }

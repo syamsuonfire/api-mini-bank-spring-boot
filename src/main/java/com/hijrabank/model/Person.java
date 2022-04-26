@@ -37,6 +37,15 @@ public class Person extends AuditModel {
 	public Person() {
 	}
 
+	public Person(Long id, @NotNull @Size(max = 50) String name, @NotNull String address, @NotNull Date birthDate
+			) {
+		this.id = id;
+		this.name = name;
+		this.address = address;
+		this.birthDate = birthDate;
+	
+	}
+
 	public Person(Long id, @NotNull @Size(max = 50) String name, @NotNull String address, @NotNull Date birthDate,
 			Account account) {
 		this.id = id;
