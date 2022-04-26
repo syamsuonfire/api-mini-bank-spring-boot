@@ -33,8 +33,7 @@ public class AccountController {
 	PersonRepository personRepository;
 
 	@PostMapping("/create/{personId}")
-    public ResponseEntity<ResponseData<Account>> createAccount(@Valid @PathVariable(value = "personId") Long personId,
-			@Valid @RequestBody Account account, Errors errors) {
+    public ResponseEntity<ResponseData<Account>> createAccount(@Valid @PathVariable(value = "personId") Long personId, @Valid @RequestBody Account account, Errors errors) {
         ResponseData<Account> responseData = new ResponseData<>();
         if (errors.hasErrors()) {
             for (ObjectError error : errors.getAllErrors()) {

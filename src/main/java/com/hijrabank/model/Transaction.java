@@ -41,6 +41,7 @@ public class Transaction  extends AuditModel {
 	@NotNull
 	@NumberFormat(pattern = "#,###,###,###.##")
 	@Min(value = 0, message = "Amount must be greater than 0")
+
 	private BigDecimal amount;
 
 	@NotNull

@@ -1,10 +1,14 @@
 package com.hijrabank.service;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
+import com.hijrabank.exception.KamuKorupsiException;
 import com.hijrabank.model.Account;
+import com.hijrabank.model.Person;
 import com.hijrabank.model.Transaction;
 import com.hijrabank.repository.AccountRepository;
+import com.hijrabank.repository.PersonRepository;
 import com.hijrabank.repository.TransactionRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +20,9 @@ public class TransactionService {
 
 	@Autowired
 	AccountRepository accountRepository;
+
+	@Autowired
+	PersonRepository personRepository;
 
 	@Autowired
 	TransactionRepository transactionRepository;
@@ -61,6 +68,11 @@ public class TransactionService {
 			throw new Exception("Account inactive!");
 		}
 
+		Optional<Person> temp = personRepository.findById(account.getPerson().getId());
+		double tempDouble =amountToCredit.doubleValue();
+		if ( tempDouble > temp.get().getSalary()) {
+			throw new KamuKorupsiException("Kamu Korupsi");
+		}
 		account.setBalance(account.getBalance().add(amountToCredit));
 
 		accountRepository.save(account);

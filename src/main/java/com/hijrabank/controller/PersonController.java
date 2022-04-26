@@ -45,6 +45,11 @@ public class PersonController {
         return ResponseEntity.ok(responseData);
     }
 
+    @GetMapping("/{hobby}")
+    public Iterable<Person> getByHobby(@Valid @PathVariable("hobby") String hobby) {
+        return personRepository.findByHobbyIgnoreCaseContaining(hobby);
+    }
+
     // Get Person By Id
     @GetMapping("/{id}")
     public ResponseEntity<ResponseData<Person>> getById(@Valid @PathVariable("id") Long id) {
@@ -59,6 +64,22 @@ public class PersonController {
             throw new ResourceNotFoundException("Person not found with id " + id);
         });
     }
+
+
+
+
+    // public ResponseEntity<ResponseData<Person>> getById(@Valid @PathVariable("id") Long id) {
+    //     return personRepository.findById(id).map(person -> {
+    //         ResponseData<Person> responseData = new ResponseData<>(
+    //                 HttpStatus.OK.value(),
+    //                 Arrays.asList("Successfully get person by id " + id),
+    //                 person
+    //         );
+    //         return ResponseEntity.ok(responseData);
+    //     }).orElseThrow(() -> {
+    //         throw new ResourceNotFoundException("Person not found with id " + id);
+    //     });
+    // }
 
     // Create Person
     @PostMapping

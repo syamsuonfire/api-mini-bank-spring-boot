@@ -40,9 +40,23 @@ public class ControllerExceptionHandler {
         @ExceptionHandler({
             MethodArgumentTypeMismatchException.class
     })
-    public ResponseEntity<ErrorMessage> methodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex, WebRequest request) {
+        public ResponseEntity<ErrorMessage> methodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex,
+                WebRequest request) {
+            ErrorMessage message = new ErrorMessage(
+                    HttpStatus.BAD_REQUEST.value(),
+                    new Date(),
+                    Arrays.asList(ex.getMessage()),
+                    request.getDescription(false));
+
+            return new ResponseEntity<ErrorMessage>(message, HttpStatus.BAD_REQUEST);
+        }
+    
+    @ExceptionHandler({
+            KamuKorupsiException.class
+    })
+    public ResponseEntity<ErrorMessage> kamuKorupsiException(KamuKorupsiException ex, WebRequest request) {
     ErrorMessage message = new ErrorMessage(
-        HttpStatus.BAD_REQUEST.value(),
+        HttpStatus.NOT_ACCEPTABLE.value(),
         new Date(),
         Arrays.asList(ex.getMessage()),
         request.getDescription(false));

@@ -26,6 +26,11 @@ public class Person extends AuditModel {
     @NotNull(message = "Birthdate is required")
     @Temporal(TemporalType.DATE)
 	private Date birthDate;
+
+	private Double salary;
+
+	private String hobby;
+
 	
     @OneToOne(fetch = FetchType.EAGER,
         cascade = {
@@ -37,21 +42,31 @@ public class Person extends AuditModel {
 	public Person() {
 	}
 
-	public Person(Long id, @NotNull @Size(max = 50) String name, @NotNull String address, @NotNull Date birthDate
-			) {
+
+
+	public Person(Long id,
+			@NotNull(message = "Name is required") @Size(min = 3, message = "Name too short, min 3 characters") @Size(max = 50, message = "Name too long, max 50 characters") String name,
+			@NotNull(message = "Address is required") String address,
+			@NotNull(message = "Birthdate is required") Date birthDate, Double salary, String hobby, Account account) {
 		this.id = id;
 		this.name = name;
 		this.address = address;
 		this.birthDate = birthDate;
-	
+		this.salary = salary;
+		this.hobby = hobby;
+		this.account = account;
 	}
 
+
+
 	public Person(Long id, @NotNull @Size(max = 50) String name, @NotNull String address, @NotNull Date birthDate,
-			Account account) {
+			Account account,Double salary, String hobby) {
 		this.id = id;
 		this.name = name;
 		this.address = address;
 		this.birthDate = birthDate;
+				this.salary = salary;
+		this.hobby = hobby;
 		this.account = account;
 	}
 
@@ -95,5 +110,29 @@ public class Person extends AuditModel {
 		this.account = account;
 	}
 
+
+	public Double getSalary() {
+		return salary;
+	}
+
+
+
+	public void setSalary(Double salary) {
+		this.salary = salary;
+	}
+
+
+
+	public String getHobby() {
+		return hobby;
+	}
+
+
+
+	public void setHobby(String hobby) {
+		this.hobby = hobby;
+	}
+
+	
 }
 
