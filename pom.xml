@@ -8,10 +8,10 @@
 		<version>2.6.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.hijrabank</groupId>
-	<artifactId>hijrabank-backend</artifactId>
+	<groupId>com.minibank</groupId>
+	<artifactId>minibank-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>hijrabank-backend</name>
+	<name>minibank-backend</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
